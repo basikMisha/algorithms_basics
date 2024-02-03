@@ -50,4 +50,62 @@ class LinkedList {
         }
         this.length++;
     }
+
+    getNodeByPosition(position) {
+        if(position < 0 || position > this.length) {
+            return "Incorrect position value";
+        }
+
+        let current = this.head;
+        let index = 0;
+
+        while(index < current) {
+            current = current.next;
+            index++;
+        }
+
+        return current.value;
+    }
+
+    removeFromPosition(position) {
+        if(position < 0 || position > this.length) {
+            return "Incorrect position value";
+        }
+
+        let current = this.head;
+
+        if(position === 0) {
+            this.head = current.next;
+        } else {
+            let prev = null;
+            let index = 0;
+
+            while(index < position) {
+                prev = current;
+                current = current.next;
+                index++;
+            }
+
+            prev.next = current.next;
+        }
+        this.length--;
+        return current.value;
+    }
+
+    print() {
+        let current = this.head;
+
+        while(current) {
+            console.log(current.value);
+            current = current.next;
+        }
+    }
 }
+
+let list = new LinkedList();
+list.addToTheEnd(12);
+list.addToTheEnd(123);
+list.addToTheEnd(1232);
+list.addToTheEnd(1233);
+list.insertInPosition(0, 2)
+list.print();
