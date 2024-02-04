@@ -100,12 +100,45 @@ class LinkedList {
             current = current.next;
         }
     }
+
+    getIndexOf(value) {
+        let current = this.head;
+        let index = 0;
+
+        while(current) {
+            if(current.value === value) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        
+        return -1;
+    }
+
+    removeElementByValue(value) {
+        return this.removeFromPosition(this.getIndexOf(value));
+    }
+
+    isEmpty() {
+        return this.length === 0;
+    }
+
+    getLength() {
+        return this.length;
+    }
 }
 
 let list = new LinkedList();
-list.addToTheEnd(12);
-list.addToTheEnd(123);
-list.addToTheEnd(1232);
-list.addToTheEnd(1233);
-list.insertInPosition(0, 2)
+list.addToTheEnd(10);
+list.addToTheEnd(10);
+list.addToTheEnd(10);
+list.addToTheEnd(10);
 list.print();
+list.removeElementByValue(10);
+list.removeFromPosition(1)
+console.log("-------")
+list.print();
+console.log(list.isEmpty());
+console.log(list.getLength());
+// console.log(list.getIndexOf(110))
